@@ -21,11 +21,10 @@ dotenv.config();
 require("./src/routes")(app);
 
 // PORT
-const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//   console.log(`Listen Port ${PORT}`);
-// });
+const port = process.env.PORT || 3000;
 
-app.listen(PORT, "0.0.0.0", function () {
-  console.log(`Listen Port ${PORT}`);
+// Listen on `port` and 0.0.0.0
+app.listen(port, "0.0.0.0", function () {
+  // ...
+  console.log(`Listen port`);
 });
