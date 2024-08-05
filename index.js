@@ -22,6 +22,10 @@ require("./src/routes")(app);
 
 // PORT
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+// app.listen(PORT, () => {
+//   console.log(`Listen Port ${PORT}`);
+// });
+
+app.listen(PORT, "0.0.0.0", function () {
   console.log(`Listen Port ${PORT}`);
 });
