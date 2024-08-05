@@ -4,10 +4,8 @@ const cors = require("cors");
 const app = express();
 const corsOptions = {
   origin: "*",
-  credential: true,
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 };
-app.options("", cors(corsOptions));
+// app.options("", cors(corsOptions));
 app.use(cors(corsOptions));
 const dotenv = require("dotenv");
 
