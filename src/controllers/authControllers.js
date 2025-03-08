@@ -67,8 +67,9 @@ const login = async (req, res) => {
     return responseSucces(res, 200, {
       email: user.email,
       username: user.username,
-      updatedAt: user.updatedAt,
-      createdAt: user.createdAt,
+      role: user.role,
+      updatedAt: user.updatedAt.toISOString().split("T")[0],
+      createdAt: user.createdAt.toISOString().split("T")[0],
       token: token,
     });
   } catch (error) {

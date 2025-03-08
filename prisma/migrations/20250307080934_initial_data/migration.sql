@@ -24,6 +24,22 @@ CREATE TABLE "user" (
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "hydrant" (
+    "id" SERIAL NOT NULL,
+    "code" TEXT NOT NULL,
+    "section" TEXT NOT NULL,
+    "merk" TEXT NOT NULL,
+    "description" TEXT,
+    "active" BOOLEAN NOT NULL DEFAULT true,
+    "createdBy" INTEGER,
+    "updatedBy" INTEGER,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "hydrant_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "profile_user_id_key" ON "profile"("user_id");
 
@@ -32,6 +48,9 @@ CREATE UNIQUE INDEX "user_username_key" ON "user"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "hydrant_code_key" ON "hydrant"("code");
 
 -- AddForeignKey
 ALTER TABLE "profile" ADD CONSTRAINT "profile_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

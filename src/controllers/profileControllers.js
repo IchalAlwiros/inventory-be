@@ -13,25 +13,31 @@ const listUser = async (req, res) => {
   });
 };
 
-const changeProfile = async (req, res) => {
-  let { userId } = getUser(req);
-  const user = await prisma.user.findFirst({
-    where: { id: userId },
-  });
+const myProfile = async (req, res) => {
+  try {
+    let { userId } = getUser(req);
 
-  console.log(user);
+    const user = await prisma.user.findFirst({
+      where: { id: userId },
+    });
 
-  c;
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
 
-  //   if (!user) {
-  //     return responseError(
-  //       res,
-  //       422,
-  //       `user unavailable|pengguna tidak ditersedia`
-  //     );
-  //   }
+    return responseSucces(res, 200, {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    });
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    return responseError(res, 422, error);
+  }
 };
 
 module.exports = {
-  changeProfile,
+  myProfile,
 };

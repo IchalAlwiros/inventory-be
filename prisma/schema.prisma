@@ -49,3 +49,28 @@ model user {
 
   profile   profile?
 }
+
+
+model hydrant {
+
+  id        Int      @id @default(autoincrement())
+
+  code  String  @unique
+
+  section  String   
+
+  merk String
+
+  description   String?  
+
+  active Boolean @default(true) 
+
+  createdBy Int?
+
+  updatedBy Int?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @default(now())
+}
+

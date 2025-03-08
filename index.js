@@ -23,5 +23,5 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, "0.0.0.0", function () {
   // ...
-  console.log(`Listen port`);
+  console.log(`Listen port ${port}`);
 });

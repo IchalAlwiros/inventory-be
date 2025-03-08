@@ -1,12 +1,17 @@
 const { PrismaClient, Prisma } = require("@prisma/client");
 
 class ResponseApi {
-  static responseSucces = (res, statusCode, data) => {
-    return res.status(statusCode).json({
+  static responseSucces = (res, statusCode, data, summary) => {
+    let response = {
       statusCode,
       success: true,
       data: data,
-    });
+    };
+
+    if (summary) {
+      response = { ...response, summary };
+    }
+    return res.status(statusCode).json(response);
   };
 
   static responseError = (res, statusCode, error) => {
